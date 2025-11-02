@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assignment 1</title>
+  </head>
+<body>
+  <header>
+    <h1>Assignment 1</h1>
+    <h2>Members of the group</h2>
+    <ul>
+      <li>Julia Szcześniak 257291</li>
+      <li>Patryk Gołacki</li>
+    </ul>
+  </header>
+
+  <main>
+    <section id="theoretical-part">
+      <h2>1. Theoretical Part</h2>
+
+      <h3>1.1 OSI model (short overview)</h3>
+      <p>
+        The OSI (Open Systems Interconnection) model, defined by ISO, describes how networked systems communicate by splitting the process into seven layers. Each layer has a specific role in preparing, transmitting and receiving data.
+      </p>
+
+      <ol>
+        <li><strong>Physical Layer</strong> - Handles the actual physical connection between devices. It transmits raw bits (0s and 1s) over the medium, ensuring synchronization through clock signals, controlling bit rate, and defining network topologies.</li>
+        <li><strong>Data Link Layer</strong> - Ensures reliable data transfer between directly connected nodes. It organizes data into frames, adds MAC addresses, detects and corrects transmission errors and manages flow control.</li>
+        <li><strong>Network Layer</strong> - Manages data delivery between devices on different networks. It handles logical addressing (IP addresses) and determines the best route for packet transmission from source to destination.</li>
+        <li><strong>Transport Layer</strong> - Provides end-to-end communication and reliability. It segments data, assigns port numbers for process-level delivery, ensures correct sequencing, acknowledges successful delivery, and retransmits lost segments if needed.</li>
+        <li><strong>Session Layer</strong> - Establishes, maintains, and ends communication sessions between devices. It adds checkpoints for synchronization, ensuring recovery in case of data loss.</li>
+        <li><strong>Presentation Layer</strong> - Translates data into a format the receiving system can understand. It performs data translation (e.g., ASCII to EBCDIC), encryption/decryption for security, and compression to improve transmission efficiency.</li>
+        <li><strong>Application Layer</strong> - Provides network services directly to users and applications. It enables functions such as file transfer, email, remote login, and directory services for resource access.</li>
+      </ol>
+
+      <h3>1.2 Protocol Data Units (PDU)</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>OSI Layer</th>
+            <th>Protocol Data Unit (PDU)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Physical</td><td>Bits</td></tr>
+          <tr><td>Data Link</td><td>Frames</td></tr>
+          <tr><td>Network</td><td>Packets</td></tr>
+          <tr><td>Transport</td><td>Segments (TCP) / Datagrams (UDP)</td></tr>
+          <tr><td>Session</td><td>Data</td></tr>
+          <tr><td>Presentation</td><td>Data</td></tr>
+          <tr><td>Application</td><td>Data</td></tr>
+        </tbody>
+      </table>
+
+      <h3>1.3 Protocol assignment</h3>
+      <p>Assigned protocols for each layer (as provided):</p>
+
+      <ol>
+        <li>
+          <strong>Physical Layer</strong> - USB, RS-232, RS-449, IEEE 1394, IEEE 802.11, Bluetooth
+        </li>
+
+        <li>
+          <strong>Data Link Layer</strong> - SLIP, IEEE 802.11, IEEE 1394, Bluetooth, ARP, L2TP
+        </li>
+
+        <li>
+          <strong>Network Layer</strong> - IPv4, IPv6, ICMP, IGMP, L2TP
+        </li>
+
+        <li>
+          <strong>Transport Layer</strong> - TCP, UDP
+        </li>
+
+        <li>
+          <strong>Session Layer</strong> -   NetBIOS
+        </li>
+
+        <li>
+          <strong>Presentation Layer</strong> - SSL, TLS, MIME
+        </li>
+
+        <li>
+          <strong>Application Layer</strong> - DHCP, DNS, FTP, HTTP, Telnet, NNTP, SIP, RTP
+        </li>
+      </ol>
+    </section>
+    <section id="practical-part">
+      <h2>2. Practical Part</h2>
+      <h3>Use the ping command to verify connectivity to google.com. Utilize Wireshark to capture and identify all protocols involved in this communication. Categorize the identified protocols according to the ISO/OSI reference model layers.</h3>
+      <img src="img/Picture_1.png"/>
+      <ul>
+        <li>Ethernet II - data link layer</li>
+        <li>ARP - data link layer</li>
+        <li>ICMP - network layer</li>
+        <li>IPv4 - network layer</li>
+        <li>DNS - application layer</li>
+      </ul>
+      <h3>2.2 Utilize the SCP (Secure Copy Protocol) to upload any image file from your local machine to the main directory on the server at studife.it.p.lodz.pl*. Employ Wireshark to capture and analyze the protocols involved in this data transfer. Classify the detected protocols according to their respective ISO/OSI layers.</h3>
+      <img src="img/Picture_2.png"/>
+      <p>Since SCP is secure, we can’t see what exactly is sent and can’t see the protocol itself in Wireshark, however we can see that the client sends to the server some large encrypted packets under the SSHv2 protocol, which probably means that this is our image.</p>
+      <h3>Access the webpage it.p.lodz.pl. Use Wireshark to capture and list all protocols involved in the communication. Assign each protocol to the appropriate layer of the ISO/OSI model.</h3>
+      <img src="img/Picture_3.png"/>
+      <ul>
+        <li>Ethernet II - data link layer</li>
+        <li>ARP - data link layer</li>
+        <li>IPv4 - network layer</li>
+        <li>TCP - transport layer</li>
+        <li>HTTPS (uses TLSv1.2) - application layer, presentation layer</li>
+      </ul>
+      <h3>Access the webpage studife.it.p.lodz.pl. Use Wireshark to capture and list all protocols involved in the communication. Categorize the identified protocols within the ISO/OSI layers</h3>
+      <img src="img/Picture_4.png"/>
+      <ul>
+        <li>Ethernet II - data link layer</li>
+        <li>ARP - data link layer</li>
+        <li>IPv4 - network layer</li>
+        <li>TCP - transport layer</li>
+        <li>DNS - application layer</li>
+        <li>HTTPS (uses TLSv1.2) - application layer, presentation layer</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>
